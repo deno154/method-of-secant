@@ -1,2 +1,26 @@
 # method-of-secant
-The Vigenère cipher is a polyalphabetic substitution method that encrypts text by applying different Caesar shifts based on a keyword.
+**The Vigenère cipher** is a polyalphabetic substitution method that encrypts text by applying different Caesar shifts based on a keyword.
+
+---
+
+**Шифр Виженера** — это метод многоалфавитной подстановки, который шифрует текст, применяя различные сдвиги Цезаря в зависимости от ключевого слова.
+
+---
+
+**Участники** (Учебная группа 251-351):
+- Архаров Денис Михайлович
+- Пасечников Сергей Витальевич
+- Сарыглар Буян-Доржу Аясович
+- Теркун Михаил Анатольевич
+
+---
+
+**Тема № 4** — Шифр Виженера, метод секущих. Проверка того, что ответ пользователя есть цикл заданного графа.
+
+Шифрование пароля: rsa
+Кэш: md5
+Алгоритм для решения задачи: Метод секущих
+Задача: Проверка того, что ответ пользователя есть цикл заданного графа
+
+---
+
