@@ -1,8 +1,10 @@
 import hashlib
 import math
 from flask import Flask, request, jsonify
+from database import Database
 
 app = Flask(__name__)
+db = Database()
 
 # ===================== 1. Шифр Виженера =====================
 def vigenere_cipher(text: str, key: str, mode: str = "encrypt") -> str:
