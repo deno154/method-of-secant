@@ -184,6 +184,15 @@ def handle_vigenere():
     key = data.get('key', '')
     mode = data.get('mode', 'encrypt')
     result = vigenere_cipher(text, key, mode)
+    
+    # ---- ЛОГИРОВАНИЕ (добавить эти 3 строки) ----
+    db.log_request(
+        endpoint='/vigenere',
+        params={'text': text, 'key': key, 'mode': mode},
+        result={"result": result}
+    )
+    # --------------------------------------------
+    
     return jsonify({"result": result})
 
 @app.route('/md5', methods=['POST'])
@@ -193,6 +202,13 @@ def handle_md5():
         return jsonify({"error": "missing JSON"}), 400
     text = data.get('data', '')
     result = md5_hash(text)
+    
+    db.log_request(
+        endpoint='/md5',
+        params={'data': text},
+        result={"result": result}
+    )
+    
     return jsonify({"result": result})
 
 @app.route('/secant', methods=['POST'])
@@ -205,6 +221,13 @@ def handle_secant():
     x1 = float(data.get('x1', 1.0))
     tol = float(data.get('tol', 1e-6))
     result = secant_method(func_expr, x0, x1, tol)
+    
+    db.log_request(
+        endpoint='/secant',
+        params={'func_expr': func_expr, 'x0': x0, 'x1': x1, 'tol': tol},
+        result=result   # result уже словарь, не оборачиваем в {"result": ...}
+    )
+    
     return jsonify(result)
 
 @app.route('/graph_cycle', methods=['POST'])
@@ -215,6 +238,13 @@ def handle_graph_cycle():
     graph = data.get('graph', {})
     user_answer = data.get('user_answer', [])
     is_cycle = check_graph_cycle(graph, user_answer)
+    
+    db.log_request(
+        endpoint='/graph_cycle',
+        params={'graph': graph, 'user_answer': user_answer},
+        result={"is_cycle": is_cycle}
+    )
+    
     return jsonify({"is_cycle": is_cycle})
 
 if __name__ == '__main__':
