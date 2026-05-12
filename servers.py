@@ -247,5 +247,14 @@ def handle_graph_cycle():
     
     return jsonify({"is_cycle": is_cycle})
 
+@app.route('/logs', methods=['GET'])
+def get_logs():
+    """Возвращает последние 50 записей из БД."""
+    logs = db.get_all_logs(limit=50)
+    return jsonify({"logs": logs})
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    try:
+        app.run(host='0.0.0.0', port=5000, debug=True)
+    finally:
+        db.close()
