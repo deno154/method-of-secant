@@ -16,3 +16,10 @@ ENV/
 # Project files (if necessary)
 .env
 *.db
+
+# CPP
+build/
+*.exe
+*.o
+*.obj
+*.DS_Store
