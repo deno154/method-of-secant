@@ -21,6 +21,8 @@ set(SOURCES
     src/algorithms/graph_cycle/graph_cycle.cpp
 
     src/utils/json.cpp
+
+    src/database/database.cpp
 )
 
 add_executable(server ${SOURCES})
@@ -38,6 +40,8 @@ target_include_directories(server PRIVATE
     src/algorithms/graph_cycle
 
     src/utils
+
+    src/database
 )
 
 # Windows sockets
