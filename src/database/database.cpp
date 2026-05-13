@@ -26,11 +26,15 @@ bool Database::connect(const std::string &host,
                        const std::string &dbName)
 {
 
-    std::cout << "Connecting to database...\n";
+    std::cout << "\n=== DATABASE ===" << std::endl;
+
+    std::cout << "Host: " << host << std::endl;
+    std::cout << "User: " << user << std::endl;
+    std::cout << "Database: " << dbName << std::endl;
 
     connected = true;
 
-    std::cout << "Database connected\n";
+    std::cout << "Connection status: SUCCESS" << std::endl;
 
     return true;
 }

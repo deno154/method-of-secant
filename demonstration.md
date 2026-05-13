@@ -7,30 +7,14 @@
 **macOS**:
 
 ```bash
-cd ../..
 cd /Users/deno/MOS/method-of-secant/
 rm -rf build
-```
-
-
-```bash
 mkdir build
 cd build
 
 cmake ..
 make
-
 ./server
-```
-
-```bash
-rm -rf build
-
-mkdir build
-cd build
-
-cmake ..
-make
 ```
 
 ---
@@ -153,6 +137,30 @@ curl -X POST http://localhost:8080/graph-cycle \
 - endpoint графов
 - обработку JSON
 - вызов алгоритма проверки цикла
+
+---
+
+## Проверка работы HTTP сервера после подключения БД.
+
+```bash
+curl -X POST http://localhost:8080/md5 \
+-H "Content-Type: application/json" \
+-d "{\"text\":\"hello\"}"
+```
+
+Ожидаемый вывод:
+```bash
+{
+    "status":"ok",
+    "algorithm":"md5",
+    "message":"stub"
+}
+```
+
+Проверяет:
+- сервер продолжает работать после подключения БД
+- singleton БД не ломает HTTP сервер
+- routing и handlers работают корректно
 
 ---
 
