@@ -7,6 +7,13 @@
 **macOS**:
 
 ```bash
+cd ../..
+cd /Users/deno/MOS/method-of-secant/
+rm -rf build
+```
+
+
+```bash
 mkdir build
 cd build
 
@@ -15,6 +22,18 @@ make
 
 ./server
 ```
+
+```bash
+rm -rf build
+
+mkdir build
+cd build
+
+cmake ..
+make
+```
+
+---
 
 **windows 10**:
 
