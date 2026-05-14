@@ -233,3 +233,57 @@ curl -X POST http://localhost:8080/vigenere \
 
 ---
 
+## Проверка работы авторизации и регистрации.
+
+Проверка регистрации пользователя:
+```bash
+curl -X POST http://localhost:8080/register \
+-H "Content-Type: application/json" \
+-d "{\"user\":\"test\",\"password\":\"123\"}"
+```
+
+![server](screenshots_demo/server.jpg)
+
+Ожидаемый вывод:
+```json
+{
+  "status": "ok",
+  "message": "user registered (stub)"
+}
+```
+
+Проверяет:
+- работу endpoint /register
+- обработку POST-запросов
+- работу routing системы
+- корректное подключение auth-модуля
+
+![server_q](screenshots_demo/server_q.jpg)
+
+Проверка авторизации пользователя:
+```bash
+curl -X POST http://localhost:8080/login \
+-H "Content-Type: application/json" \
+-d "{\"user\":\"test\",\"password\":\"123\"}"
+```
+
+Ожидаемый вывод:
+```json
+{
+  "status": "ok",
+  "message": "user logged in (stub)"
+}
+```
+
+Проверяет:
+- работу endpoint /login
+- обработку JSON-запросов
+- работу auth handlers
+- корректную интеграцию сервера и БД
+
+![server_w](screenshots_demo/server_w.jpg)
+
+Сервер поддерживает подключение нескольких клиентов одновременно и использует Singleton-подключение к БД.
+
+---
+
