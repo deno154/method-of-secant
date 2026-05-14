@@ -33,7 +33,7 @@ mingw32-make
 server.exe
 ```
 
-![start](screenshoots_demo/start.jpg)
+![start](screenshots_demo/start.jpg)
 
 ---
 
@@ -48,9 +48,9 @@ curl http://localhost:8080/test
 ```json
 {"status":"error","message":"Unknown endpoint"}
 ```
-![endpoint](screenshoots_demo/endpoint.jpg)
+![endpoint](screenshots_demo/endpoint.jpg)
 
-![endpoint_q](screenshoots_demo/endpoint_q.jpg)
+![endpoint_q](screenshots_demo/endpoint_q.jpg)
 
 ---
 
@@ -145,11 +145,11 @@ curl -X POST http://localhost:8080/graph-cycle \
 - обработку JSON
 - вызов алгоритма проверки цикла
 
-![functional](screenshoots_demo/functional.jpg)
+![functional](screenshots_demo/functional.jpg)
 
-![functional_q](screenshoots_demo/functional.jpg)
+![functional_q](screenshots_demo/functional.jpg)
 
-![functional_w](screenshoots_demo/functional.jpg)
+![functional_w](screenshots_demo/functional.jpg)
 
 
 ---
@@ -178,9 +178,9 @@ curl -X POST http://localhost:8080/md5 \
 
 HTTP POST-запросы имеют одинаковую структуру (Content-Type: application/json), различаясь только маршрутом (endpoint), который определяет вызываемый обработчик сервера.
 
-![connected_db](screenshoots_demo/connected_db.jpg)
+![connected_db](screenshots_demo/connected_db.jpg)
 
-![connected_db_q](screenshoots_demo/connected_db_q.jpg)
+![connected_db_q](screenshots_demo/connected_db_q.jpg)
 
 ---
 
@@ -227,9 +227,9 @@ curl -X POST http://localhost:8080/vigenere \
 
 Из-за высокой скорости обработки запросов параллельность выполнения не всегда визуально отражается в логах.
 
-![client](screenshoots_demo/client.jpg)
+![client](screenshots_demo/client.jpg)
 
-![client_q](screenshoots_demo/client_q.jpg)
+![client_q](screenshots_demo/client_q.jpg)
 
 ---
 
