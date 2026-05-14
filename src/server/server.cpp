@@ -1,6 +1,5 @@
 #include "server.h"
 #include "../handlers/handlers.h"
-#include "../auth/auth.h"
 
 #include <iostream>
 #include <string>
@@ -28,11 +27,7 @@ void handleClient(int clientSocket)
 
     if (bytesReceived <= 0)
     {
-#ifdef _WIN32
-        closesocket(clientSocket);
-#else
         close(clientSocket);
-#endif
         return;
     }
 
@@ -60,25 +55,15 @@ void handleClient(int clientSocket)
     {
         responseBody = handleGraphCycle(request);
     }
-    else if (request.find("POST /register") != std::string::npos)
-    {
-        responseBody = registerUser(request);
-    }
-    else if (request.find("POST /login") != std::string::npos)
-    {
-        responseBody = loginUser(request);
-    }
     else
     {
         responseBody = R"({"status":"error","message":"Unknown endpoint"})";
     }
 
-    // HTTP RESPONSE
     std::string httpResponse =
         "HTTP/1.1 200 OK\r\n"
         "Content-Type: application/json\r\n"
         "Access-Control-Allow-Origin: *\r\n"
-        "Connection: close\r\n"
         "Content-Length: " +
         std::to_string(responseBody.size()) +
         "\r\n\r\n" +
@@ -147,7 +132,8 @@ void HttpServer::start()
             continue;
         }
 
-        std::thread(handleClient, clientSocket).detach();
+        std::thread clientThread(handleClient, clientSocket);
+        clientThread.detach();
     }
 
 #ifdef _WIN32
