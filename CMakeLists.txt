@@ -48,4 +48,4 @@ target_include_directories(server PRIVATE
 
 if(WIN32)
     target_link_libraries(server ws2_32)
-endif()# Docs branch adjustment
+endif()
