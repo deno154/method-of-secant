@@ -147,9 +147,9 @@ curl -X POST http://localhost:8080/graph-cycle \
 
 ![functional](screenshots_demo/functional.jpg)
 
-![functional_q](screenshots_demo/functional.jpg)
+![functional_q](screenshots_demo/functional_q.jpg)
 
-![functional_w](screenshots_demo/functional.jpg)
+![functional_w](screenshots_demo/functional_w.jpg)
 
 
 ---
