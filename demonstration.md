@@ -163,5 +163,3 @@ curl -X POST http://localhost:8080/md5 \
 - routing и handlers работают корректно
 
 ---
-
-> Documentation branch commit
