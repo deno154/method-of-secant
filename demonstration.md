@@ -1,5 +1,7 @@
 # Демонстрация работы проекта.
 
+Логи сервера выводятся в терминал, в котором запущено серверное приложение. HTTP-запросы отображаются через стандартный вывод (std::cout) в момент обработки запроса. Ответы сервера возвращаются в терминал клиента (curl), где отображается результат выполнения запроса в формате JSON.
+
 ---
 
 ## Сборка.
@@ -31,6 +33,8 @@ mingw32-make
 server.exe
 ```
 
+![start](screenshoots_demo/start.jpg)
+
 ---
 
 ## Демонстрация работы сервера и функций.
@@ -44,6 +48,9 @@ curl http://localhost:8080/test
 ```json
 {"status":"error","message":"Unknown endpoint"}
 ```
+![endpoint](screenshoots_demo/endpoint.jpg)
+
+![endpoint_q](screenshoots_demo/endpoint_q.jpg)
 
 ---
 
@@ -138,6 +145,13 @@ curl -X POST http://localhost:8080/graph-cycle \
 - обработку JSON
 - вызов алгоритма проверки цикла
 
+![functional](screenshoots_demo/functional.jpg)
+
+![functional_q](screenshoots_demo/functional.jpg)
+
+![functional_w](screenshoots_demo/functional.jpg)
+
+
 ---
 
 ## Проверка работы HTTP сервера после подключения БД.
@@ -161,6 +175,12 @@ curl -X POST http://localhost:8080/md5 \
 - сервер продолжает работать после подключения БД
 - singleton БД не ломает HTTP сервер
 - routing и handlers работают корректно
+
+HTTP POST-запросы имеют одинаковую структуру (Content-Type: application/json), различаясь только маршрутом (endpoint), который определяет вызываемый обработчик сервера.
+
+![connected_db](screenshoots_demo/connected_db.jpg)
+
+![connected_db_q](screenshoots_demo/connected_db_q.jpg)
 
 ---
 
@@ -204,6 +224,12 @@ curl -X POST http://localhost:8080/vigenere \
 - routing работает корректно для разных endpoint’ов
 - обработчики (handlers) вызываются независимо друг от друга
 - сервер не блокируется при параллельных запросах
+
+Из-за высокой скорости обработки запросов параллельность выполнения не всегда визуально отражается в логах.
+
+![client](screenshoots_demo/client.jpg)
+
+![client_q](screenshoots_demo/client_q.jpg)
 
 ---
 
