@@ -163,3 +163,47 @@ curl -X POST http://localhost:8080/md5 \
 - routing и handlers работают корректно
 
 ---
+
+## Проверка многопоточной обработки HTTP-запросов.
+
+MD5 запрос:
+```bash
+curl -X POST http://localhost:8080/md5 \
+-H "Content-Type: application/json" \
+-d "{\"text\":\"hello\"}"
+```
+
+Ожидаемый вывод:
+```json
+{
+    "status":"ok",
+    "algorithm":"md5",
+    "message":"stub"
+}
+```
+
+Vigenere запрос:
+```bash
+curl -X POST http://localhost:8080/vigenere \
+-H "Content-Type: application/json" \
+-d "{\"text\":\"hello\",\"key\":\"abc\"}"
+```
+
+Ожидаемый вывод:
+```bash
+{
+    "status":"ok",
+    "algorithm":"vigenere",
+    "message":"stub"
+}
+```
+
+Проверяет:
+- сервер обрабатывает несколько HTTP-запросов подряд
+- каждый запрос выполняется в отдельном потоке (multi-client support)
+- routing работает корректно для разных endpoint’ов
+- обработчики (handlers) вызываются независимо друг от друга
+- сервер не блокируется при параллельных запросах
+
+---
+
