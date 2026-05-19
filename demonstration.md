@@ -55,10 +55,16 @@ curl http://localhost:8080/test
 ---
 
 Проверка /md5:
+unix:
 ```bash
 curl -X POST http://localhost:8080/md5 \
 -H "Content-Type: application/json" \
 -d "{\"text\":\"hello\"}"
+```
+
+windows:
+```bash
+curl.exe -X POST http://localhost:8080/md5 -H "Content-Type: application/json" -d "{\"text\":\"hello\"}"
 ```
 
 Ожидаемый вывод:
@@ -80,10 +86,16 @@ curl -X POST http://localhost:8080/md5 \
 ---
 
 Проверка /vigenere:
+unix:
 ```bash
 curl -X POST http://localhost:8080/vigenere \
 -H "Content-Type: application/json" \
 -d "{\"text\":\"hello\",\"key\":\"abc\"}"
+```
+
+windows:
+```bash
+curl.exe -X POST http://localhost:8080/vigenere -H "Content-Type: application/json" -d "{\"text\":\"hello\",\"key\":\"abc\"}"
 ```
 
 Ожидаемый вывод:
@@ -103,10 +115,16 @@ curl -X POST http://localhost:8080/vigenere \
 ---
 
 Проверка /secant:
+unix:
 ```bash
 curl -X POST http://localhost:8080/secant \
 -H "Content-Type: application/json" \
 -d "{\"a\":\"1\",\"b\":\"2\"}"
+```
+
+windows:
+```bash
+curl.exe -X POST http://localhost:8080/secant -H "Content-Type: application/json" -d "{\"a\":\"1\",\"b\":\"2\"}"
 ```
 
 Ожидаемый вывод:
@@ -126,10 +144,16 @@ curl -X POST http://localhost:8080/secant \
 ---
 
 Проверка /graph-cycle:
+unix:
 ```bash
 curl -X POST http://localhost:8080/graph-cycle \
 -H "Content-Type: application/json" \
 -d "{\"graph\":\"1-2,2-3,3-1\"}"
+```
+
+windows:
+```bash
+curl.exe -X POST "http://localhost:8080/graph-cycle" 
 ```
 
 Ожидаемый вывод:
@@ -156,10 +180,18 @@ curl -X POST http://localhost:8080/graph-cycle \
 
 ## Проверка работы HTTP сервера после подключения БД.
 
+unix:
 ```bash
 curl -X POST http://localhost:8080/md5 \
 -H "Content-Type: application/json" \
 -d "{\"text\":\"hello\"}"
+```
+
+windows:
+```bash
+curl.exe -X POST "http://localhost:8080/graph-cycle" `
+-H "Content-Type: application/json" `
+-d '{"graph":"1-2,2-3,3-1"}'
 ```
 
 Ожидаемый вывод:
@@ -187,10 +219,16 @@ HTTP POST-запросы имеют одинаковую структуру (Con
 ## Проверка многопоточной обработки HTTP-запросов.
 
 MD5 запрос:
+unix:
 ```bash
 curl -X POST http://localhost:8080/md5 \
 -H "Content-Type: application/json" \
 -d "{\"text\":\"hello\"}"
+```
+
+windows:
+```bash
+-
 ```
 
 Ожидаемый вывод:
@@ -203,14 +241,20 @@ curl -X POST http://localhost:8080/md5 \
 ```
 
 Vigenere запрос:
+unix:
 ```bash
 curl -X POST http://localhost:8080/vigenere \
 -H "Content-Type: application/json" \
 -d "{\"text\":\"hello\",\"key\":\"abc\"}"
 ```
 
-Ожидаемый вывод:
+windows:
 ```bash
+-
+```
+
+Ожидаемый вывод:
+```json
 {
     "status":"ok",
     "algorithm":"vigenere",
@@ -236,10 +280,16 @@ curl -X POST http://localhost:8080/vigenere \
 ## Проверка работы авторизации и регистрации.
 
 Проверка регистрации пользователя:
+unix:
 ```bash
 curl -X POST http://localhost:8080/register \
 -H "Content-Type: application/json" \
 -d "{\"user\":\"test\",\"password\":\"123\"}"
+```
+
+windows:
+```bash
+-
 ```
 
 ![server](screenshots_demo/server.jpg)
@@ -261,10 +311,16 @@ curl -X POST http://localhost:8080/register \
 ![server_q](screenshots_demo/server_q.jpg)
 
 Проверка авторизации пользователя:
+unix:
 ```bash
 curl -X POST http://localhost:8080/login \
 -H "Content-Type: application/json" \
 -d "{\"user\":\"test\",\"password\":\"123\"}"
+```
+
+windows:
+```bash
+-
 ```
 
 Ожидаемый вывод:

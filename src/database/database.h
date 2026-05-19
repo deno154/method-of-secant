@@ -2,31 +2,27 @@
 #define DATABASE_H
 
 #include <string>
+#include <map>
 
 class Database
 {
 private:
     static Database *instance;
 
+    std::map<std::string, std::string> users;
+
     Database();
 
 public:
-    Database(const Database &) = delete;
-    Database &operator=(const Database &) = delete;
-
     static Database &getInstance();
 
-    bool connect(const std::string &host,
-                 const std::string &user,
-                 const std::string &password,
-                 const std::string &dbName);
+    bool addUser(const std::string &username,
+                 const std::string &password);
 
-    void disconnect();
+    bool checkUser(const std::string &username,
+                   const std::string &password);
 
-    bool isConnected() const;
-
-private:
-    bool connected;
+    void printUsers();
 };
 
 #endif

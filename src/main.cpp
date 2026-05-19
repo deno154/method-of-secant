@@ -1,22 +1,18 @@
-#include "server.h"
-#include "../database/database.h"
+#include "server/server.h"
+#include "database/database.h"
+
+#include <iostream>
 
 int main()
 {
+    Database &db =
+        Database::getInstance();
 
-    Database &db = Database::getInstance();
-
-    db.connect(
-        "localhost",
-        "admin",
-        "1234",
-        "tmps_db");
+    std::cout << "\n=== DATABASE READY ===\n";
 
     HttpServer server(8080);
 
     server.start();
-
-    db.disconnect();
 
     return 0;
 }

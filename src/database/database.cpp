@@ -6,12 +6,11 @@ Database *Database::instance = nullptr;
 
 Database::Database()
 {
-    connected = false;
+    std::cout << "\n=== DATABASE INITIALIZED ===\n";
 }
 
 Database &Database::getInstance()
 {
-
     if (instance == nullptr)
     {
         instance = new Database();
@@ -20,34 +19,45 @@ Database &Database::getInstance()
     return *instance;
 }
 
-bool Database::connect(const std::string &host,
-                       const std::string &user,
-                       const std::string &password,
-                       const std::string &dbName)
+bool Database::addUser(const std::string &username,
+                       const std::string &password)
 {
+    if (users.find(username) != users.end())
+    {
+        return false;
+    }
 
-    std::cout << "\n=== DATABASE ===" << std::endl;
+    users[username] = password;
 
-    std::cout << "Host: " << host << std::endl;
-    std::cout << "User: " << user << std::endl;
-    std::cout << "Database: " << dbName << std::endl;
-
-    connected = true;
-
-    std::cout << "Connection status: SUCCESS" << std::endl;
+    std::cout << "[DB] User added: "
+              << username
+              << std::endl;
 
     return true;
 }
 
-void Database::disconnect()
+bool Database::checkUser(const std::string &username,
+                         const std::string &password)
 {
+    auto it = users.find(username);
 
-    connected = false;
+    if (it == users.end())
+    {
+        return false;
+    }
 
-    std::cout << "Database disconnected\n";
+    return it->second == password;
 }
 
-bool Database::isConnected() const
+void Database::printUsers()
 {
-    return connected;
+    std::cout << "\n=== USERS ===\n";
+
+    for (const auto &user : users)
+    {
+        std::cout << user.first
+                  << " : "
+                  << user.second
+                  << std::endl;
+    }
 }

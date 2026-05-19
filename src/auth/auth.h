@@ -4,6 +4,7 @@
 #include <string>
 
 std::string registerUser(const std::string &request);
+
 std::string loginUser(const std::string &request);
 
 #endif
