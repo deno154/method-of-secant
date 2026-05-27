@@ -1,0 +1,11 @@
+HTTP/1.1 200 OK
+Content-Type: application/json
+Access-Control-Allow-Origin: *
+Connection: close
+Content-Length: 82
+
+{
+        "status":"ok",
+        "algorithm":"md5",
+        "message":"stub"
+    }

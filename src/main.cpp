@@ -1,9 +1,8 @@
-#include "server.h"
-#include "../database/database.h"
+#include "server/server.h"
+#include "database/database.h"
 
 int main()
 {
-
     Database &db = Database::getInstance();
 
     db.connect(

@@ -3,37 +3,19 @@
 std::string extractJsonValue(const std::string &json,
                              const std::string &key)
 {
+    std::string pattern = "\"" + key + "\"";
 
-    std::string searchKey = "\"" + key + "\"";
+    size_t p = json.find(pattern);
+    if (p == std::string::npos) return "";
 
-    size_t keyPos = json.find(searchKey);
+    size_t colon = json.find(":", p);
+    if (colon == std::string::npos) return "";
 
-    if (keyPos == std::string::npos)
-    {
-        return "";
-    }
+    size_t q1 = json.find("\"", colon);
+    if (q1 == std::string::npos) return "";
 
-    size_t colonPos = json.find(":", keyPos);
+    size_t q2 = json.find("\"", q1 + 1);
+    if (q2 == std::string::npos) return "";
 
-    if (colonPos == std::string::npos)
-    {
-        return "";
-    }
-
-    size_t startQuote = json.find("\"", colonPos + 1);
-
-    if (startQuote == std::string::npos)
-    {
-        return "";
-    }
-
-    size_t endQuote = json.find("\"", startQuote + 1);
-
-    if (endQuote == std::string::npos)
-    {
-        return "";
-    }
-
-    return json.substr(startQuote + 1,
-                       endQuote - startQuote - 1);
+    return json.substr(q1 + 1, q2 - q1 - 1);
 }
