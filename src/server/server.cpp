@@ -79,28 +79,59 @@ void handleClient(int clientSocket)
     // =========================
     // ROUTING
     // =========================
+    // =========================
+// ROUTING
+// =========================
     std::string responseBody;
 
     if (request.find("POST /vigenere") != std::string::npos)
+    {
+        std::cout << "[ENDPOINT] /vigenere\n";
+
         responseBody = handleVigenere(body);
+    }
 
     else if (request.find("POST /md5") != std::string::npos)
+    {
+        std::cout << "[ENDPOINT] /md5\n";
+
         responseBody = handleMD5(body);
+    }
 
     else if (request.find("POST /secant") != std::string::npos)
+    {
+        std::cout << "[ENDPOINT] /secant\n";
+
         responseBody = handleSecant(body);
+    }
 
     else if (request.find("POST /graph-cycle") != std::string::npos)
+    {
+        std::cout << "[ENDPOINT] /graph-cycle\n";
+
         responseBody = handleGraphCycle(body);
+    }
 
     else if (request.find("POST /register") != std::string::npos)
+    {
+        std::cout << "[ENDPOINT] /register\n";
+
         responseBody = registerUser(body);
+    }
 
     else if (request.find("POST /login") != std::string::npos)
+    {
+        std::cout << "[ENDPOINT] /login\n";
+
         responseBody = loginUser(body);
+    }
 
     else
+    {
+        std::cout << "[ERROR] Unknown endpoint\n";
+
         responseBody = R"({"status":"error","message":"unknown endpoint"})";
+    }
 
     // =========================
     // RESPONSE
