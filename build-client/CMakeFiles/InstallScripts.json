@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/Users/deno/MOS/method-of-secant/build-client/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

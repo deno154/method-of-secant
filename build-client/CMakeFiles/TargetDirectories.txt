@@ -1,0 +1,5 @@
+/Users/deno/MOS/method-of-secant/build-client/CMakeFiles/client.dir
+/Users/deno/MOS/method-of-secant/build-client/CMakeFiles/edit_cache.dir
+/Users/deno/MOS/method-of-secant/build-client/CMakeFiles/rebuild_cache.dir
+/Users/deno/MOS/method-of-secant/build-client/CMakeFiles/client_autogen_timestamp_deps.dir
+/Users/deno/MOS/method-of-secant/build-client/CMakeFiles/client_autogen.dir
