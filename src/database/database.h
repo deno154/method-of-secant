@@ -8,10 +8,15 @@ struct User
     std::string login;
     std::string password;
 };
-
+/**
+ * @brief Singleton база данных пользователей.
+ */
 class Database
 {
 private:
+    /**
+     * @brief Получить экземпляр базы данных.
+     */
     static Database *instance;
 
     Database();
@@ -38,12 +43,18 @@ public:
     void disconnect();
 
     bool isConnected() const;
-
+    /**
+     * @brief Добавить пользователя.
+     */
     bool addUser(const std::string &login,
                  const std::string &password);
-
+    /**
+     * @brief Проверить существование пользователя.
+     */
     bool userExists(const std::string &login) const;
-
+    /**
+     * @brief Проверить логин и пароль.
+     */
     bool validateUser(const std::string &login,
                       const std::string &password) const;
 };
